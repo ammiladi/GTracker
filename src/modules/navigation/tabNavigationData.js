@@ -3,12 +3,17 @@ import CalendarScreen from '../calendar/CalendarViewContainer';
 import GridsScreen from '../grids/GridsViewContainer';
 import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
+import { Feather } from '@expo/vector-icons';
+
 
 const iconHome = require('../../../assets/images/tabbar/home.png');
 const iconCalendar = require('../../../assets/images/tabbar/calendar.png');
 const iconGrids = require('../../../assets/images/tabbar/grids.png');
 const iconPages = require('../../../assets/images/tabbar/pages.png');
+const iconReporting = require('../../../assets/images/tabbar/chart.png');
 const iconComponents = require('../../../assets/images/tabbar/components.png');
+const iconSettings = require('../../../assets/images/tabbar/settings.png');
+
 
 const tabNavigationData = [
   {
@@ -22,19 +27,19 @@ const tabNavigationData = [
     icon: iconCalendar,
   },
   {
-    name: 'Grids',
+    name: 'Ride',
     component: GridsScreen,
     icon: iconGrids,
   },
   {
-    name: 'Pages',
+    name: 'Reporting',
     component: PagesScreen,
-    icon: iconPages,
+    icon: iconReporting,
   },
   {
-    name: 'Components',
+    name: 'Settings',
     component: ComponentsScreen,
-    icon: iconComponents,
+    icon: iconSettings,
   },
 ];
 

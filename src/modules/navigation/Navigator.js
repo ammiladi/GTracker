@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { 
+import {
   createDrawerNavigator,
   DrawerItem,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import NavigatorView from './RootNavigation';
+import { MaterialIcons,Entypo,MaterialCommunityIcons,AntDesign } from '@expo/vector-icons';
 
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
 
@@ -16,28 +17,6 @@ const iconPages = require('../../../assets/images/drawer/pages.png');
 const iconComponents = require('../../../assets/images/drawer/components.png');
 const iconSettings = require('../../../assets/images/drawer/settings.png');
 
-const drawerData = [
-  {
-    name: 'Home',
-    icon: iconHome,
-  },
-  {
-    name: 'Calendar',
-    icon: iconCalendar,
-  },
-  {
-    name: 'Grids',
-    icon: iconGrids,
-  },
-  {
-    name: 'Pages',
-    icon: iconPages,
-  },
-  {
-    name: 'Components',
-    icon: iconComponents,
-  },
-];
 
 const Drawer = createDrawerNavigator();
 
@@ -49,15 +28,13 @@ function CustomDrawerContent(props) {
           style={styles.avatar}
           source={require('../../../assets/images/drawer/user.png')}
         />
-        <View style={{ paddingLeft: 15 }}>
-          <Text style={styles.userName}>John Doe</Text>
-          <Text style={{ color: '#4BC1FD' }}>Johndoe@gmail.com</Text>
+        <View style={{ paddingLeft: 5 }}>
+          <Text style={styles.userName}>MILADI Med Amine</Text>
+          <Text style={{ color: '#4BC1FD' }}>miladi.medamine@gmail.com</Text>
         </View>
       </View>
       <View style={styles.divider} />
-      {drawerData.map((item, idx) => (
         <DrawerItem
-          key={`drawer_item-${idx+1}`}
           label={() => (
             <View
               style={styles.menuLabelFlex}>
@@ -65,25 +42,67 @@ function CustomDrawerContent(props) {
                 style={{ width: 20, height: 20}}
                 source={iconHome}
               />
-              <Text style={styles.menuTitle}>{item.name}</Text>
+              <Text style={styles.menuTitle}>Home</Text>
             </View>
           )}
-          onPress={() => props.navigation.navigate(item.name)}
-        />        
-      ))}
+          onPress={() => props.navigation.navigate('Home')}
+        />
+      <DrawerItem
+          label={() => (
+              <View style={styles.menuLabelFlex}>
+                <MaterialCommunityIcons name="account-circle" size={20} color="white" />
+                <Text style={styles.menuTitle}>Profile</Text>
+              </View>
+          )}
+          onPress={() => props.navigation.navigate('Calendar')}
+      />
+      <DrawerItem
+          label={() => (
+              <View style={styles.menuLabelFlex}>
+                <AntDesign name="team" size={20} color="white" />
+                <Text style={styles.menuTitle}>Teams</Text>
+              </View>
+          )}
+          onPress={() => props.navigation.navigate('Teams')}
+      />
+      <DrawerItem
+          label={() => (
+              <View style={styles.menuLabelFlex}>
+                <AntDesign name="logout" size={20} color="white" />
+                <Text style={styles.menuTitle}>Logout</Text>
+              </View>
+          )}
+          onPress={() => props.navigation.navigate('Logout')}
+      />
       <View style={styles.divider} />
       <DrawerItem
         label={() => (
           <View style={styles.menuLabelFlex}>
-            <Image
-              style={{ width: 20, height: 20}}
-              source={iconSettings} 
-            />
-            <Text style={styles.menuTitle}>Settings</Text>
+            <MaterialCommunityIcons name="contact-phone" size={20} color="white" />
+            <Text style={styles.menuTitle}>Contact us</Text>
           </View>
         )}
         onPress={() => props.navigation.navigate('Calendar')}
       />
+      <DrawerItem
+          label={() => (
+              <View style={styles.menuLabelFlex}>
+                <Entypo name="help-with-circle" size={20} color="white" />
+                <Text style={styles.menuTitle}>Faqs</Text>
+              </View>
+          )}
+          onPress={() => props.navigation.navigate('Calendar')}
+      />
+      <DrawerItem
+          label={() => (
+              <View style={styles.menuLabelFlex}>
+                <MaterialIcons name="account-balance" size={20} color="white" />
+                <Text style={styles.menuTitle}>Legal & About</Text>
+              </View>
+          )}
+          onPress={() => props.navigation.navigate('Calendar')}
+      />
+
     </DrawerContentScrollView>
   );
 }
